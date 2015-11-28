@@ -1,0 +1,80 @@
+10:01:23 11/27/15 EST
+/Users/jackknesek/Documents/python/virtualenvs/trusses/tests
+
+
+(0) SUMMARY OF ANALYSIS
+=============================
+	- The truss has a mass of 0.01 kg, and a total factor of safety of -483.87. 
+	- The limit state is yielding.
+
+
+(1) INSTANTIATION INFORMATION
+=============================
+
+--- JOINTS ---
+         X     Y     Z    X-Support Y-Support Z-Support
+Joint_00   0.0   0.0  0.0  False      True     True    
+Joint_01  0.18   0.0  0.0  False     False     True    
+Joint_02  0.36   0.0  0.0   True      True     True    
+Joint_03  0.08  0.06  0.0  False     False     True    
+Joint_04  0.18  0.09  0.0  False     False     True    
+Joint_05  0.28  0.06  0.0  False     False     True    
+
+--- MEMBERS ---
+          Joint-A Joint-B Material Shape    Height(m)  Width(m) Radius(m) Thickness(m)
+Member_00  0       1       BALSA    square  0.00635    0.00635   N/A       N/A        
+Member_01  1       2       BALSA    square  0.00635    0.00635   N/A       N/A        
+Member_02  0       3       BALSA    square  0.00635    0.00635   N/A       N/A        
+Member_03  3       4       BALSA    square  0.00635    0.00635   N/A       N/A        
+Member_04  4       5       BALSA    square  0.00635    0.00635   N/A       N/A        
+Member_05  5       2       BALSA    square  0.00635    0.00635   N/A       N/A        
+Member_06  3       1       BALSA    square  0.00635    0.00635   N/A       N/A        
+Member_07  4       1       BALSA    square  0.00635    0.00635   N/A       N/A        
+Member_08  5       1       BALSA    square  0.00635    0.00635   N/A       N/A        
+
+--- MATERIALS ---
+      Density(kg/m3) Elastic Modulus(GPa) Yield Strength(MPa)
+BALSA  150            3.7                  20                
+
+
+(2) STRESS ANALYSIS INFORMATION
+===============================
+
+--- LOADING ---
+         X-Load Y-Load Z-Load
+Joint_00  0.0    -0.00  0.0  
+Joint_01  0.0    -0.43  0.0  
+Joint_02  0.0    -0.00  0.0  
+Joint_03  0.0    -0.00  0.0  
+Joint_04  0.0    -0.00  0.0  
+Joint_05  0.0    -0.00  0.0  
+
+--- REACTIONS ---
+         X-Reaction(kN) Y-Reaction(kN) Z-Reaction(kN)
+Joint_00    N/A          0.22           0.00         
+Joint_01    N/A           N/A           0.00         
+Joint_02  -0.00          0.22           0.00         
+Joint_03    N/A           N/A           0.00         
+Joint_04    N/A           N/A           0.00         
+Joint_05    N/A           N/A           0.00         
+
+--- FORCES AND STRESSES ---
+           Area(m2)  Moment-of-Inertia(m4)  Axial-force(N)  Yielding Buckling
+Member_00  0.00004   1.354920e-10           289.365444      806.45        N/A
+Member_01  0.00004   1.354920e-10           289.365444      806.45        N/A
+Member_02  0.00004   1.354920e-10          -361.706805     -483.87   -494.783
+Member_03  0.00004   1.354920e-10          -453.148545     -483.87    -453.93
+Member_04  0.00004   1.354920e-10          -453.148545     -483.87    -453.93
+Member_05  0.00004   1.354920e-10          -361.706805     -483.87   -494.783
+Member_06  0.00004   1.354920e-10           168.715262      806.45        N/A
+Member_07  0.00004   1.354920e-10           260.413691      806.45        N/A
+Member_08  0.00004   1.354920e-10           168.715262      806.45        N/A
+
+--- DEFLECTIONS ---
+         X-Defl.(mm) Y-Defl.(mm) Z-Defl.(mm)
+Joint_00  -0.69823         N/A    N/A       
+Joint_01  -0.34912    -1.72848    N/A       
+Joint_02       N/A         N/A    N/A       
+Joint_03  -0.14825    -1.13738    N/A       
+Joint_04  -0.34912    -1.57139    N/A       
+Joint_05  -0.54998    -1.13738    N/A       
