@@ -8,9 +8,10 @@ def find_the_best_bridge():
     print "Analyizing Bridges..."
     logger = configure_logging()
     tuple_of_bridges = get_tuples()
-    best_efficiency_so_far = 0.0
-    best_bridge_so_far = None
-    best_supported_load_so_far = 0.0
+    best_efficiency = 0.0
+    best_bridge = None
+    best_bridge_points = None
+    best_supported_load = 0.0
 
     count = 0
 
@@ -21,14 +22,15 @@ def find_the_best_bridge():
             count += 1
             if count % 10000 == 0:
                 print count
-            if efficiency > best_efficiency_so_far:
-                best_efficiency_so_far = efficiency
-                best_bridge_so_far = _truss
-                best_supported_load_so_far = supported_load
+            if efficiency > best_efficiency:
+                best_efficiency = efficiency
+                best_bridge = _truss
+                best_bridge_points = bridge
+                best_supported_load = supported_load
                 logger.debug('Best so far: ' + ' load=' + str(best_supported_load_so_far) + ' efficiency=' + str(best_efficiency_so_far))
 
-    print best_efficiency_so_far
-    best_bridge_so_far.print_and_save_report("best_bridge.txt")
+    logger.info('Best: ' + str(best_bridge_points) + ' load=' + str(best_supported_load) + ' mass=' + str(best_bridge.mass) + ' efficiency=' + str(best_efficiency))
+    best_bridge_so_far.save_report("best_bridge.txt")
 
 def is_valid_truss(truss_points_a):
     joint1 = truss_points_a[0]
@@ -138,24 +140,25 @@ def get_truss_load_and_efficiency(the_truss, logger):
 
 def get_tuples():
     print "Getting All Tuples..."
-    x1 = range (3, 15, 2)
-    y1 = range (4, 16, 2)
+    x1 = numpy.arange (1.0, 5.0, 0.5)
+    y1 = numpy.arange (4.0, 8.0, 0.5)
     p1 = itertools.product (x1,y1)
     l1 = list(p1)
 
-    x2 = range (12, 26, 2)
-    y2 = range (11, 25, 2)
+    x2 = numpy.arange (9.0, 13.0, 0.5)
+    y2 = numpy.arange (9.0, 13.0, 0.5)
     p2 = itertools.product (x2,y2)
     l2 = list(p2)
 
-    x3 = range (20, 32, 2)
-    y3 = range (6, 18, 2)
+    x3 = numpy.arange (21.0, 25.0, 0.5)
+    y3 = numpy.arange (10.0, 14.0, 0.5)
     p3 = itertools.product (x3,y3)
     l3 = list(p3)
 
     load_points_list = []
 
-    all_x = range (8, 29, 2)
+    # all_x = numpy.arange (6.0, 10.0, 0.5)
+    all_x = [18.5]
     for x in all_x:
         y = 5.0/36.0 * x
         p = (x, y)

@@ -48,7 +48,7 @@ class TestBasicPythonCode(unittest.TestCase):
                 print "True"
 
     def test_slope_is_too_high(self):
-        truss_points = ((1,3), (10,6), (25,5), (27, 3.75))
+        truss_points = ((3,8), (10,6), (25,5), (27, 3.75))
         self.assertFalse(is_valid_truss(truss_points))
 
     def test_slope_is_at_limit(self):
