@@ -27,10 +27,10 @@ def find_the_best_bridge():
                 best_bridge = _truss
                 best_bridge_points = bridge
                 best_supported_load = supported_load
-                logger.debug('Best so far: ' + ' load=' + str(best_supported_load_so_far) + ' efficiency=' + str(best_efficiency_so_far))
+                logger.debug('Best so far: ' + ' load=' + str(best_supported_load) + ' efficiency=' + str(best_efficiency))
 
     logger.info('Best: ' + str(best_bridge_points) + ' load=' + str(best_supported_load) + ' mass=' + str(best_bridge.mass) + ' efficiency=' + str(best_efficiency))
-    best_bridge_so_far.save_report("best_bridge.txt")
+    best_bridge.save_report("best_bridge.txt")
 
 def is_valid_truss(truss_points_a):
     joint1 = truss_points_a[0]
@@ -52,13 +52,27 @@ def is_valid_truss(truss_points_a):
     if joint2_x >= joint3_x:
         return False
 
+    joint4 = truss_points_a[3]
+    joint4_x = joint4[0]
+
+    if joint3_x >= joint4_x:
+        return False
+
+    joint5 = truss_points_a[4]
+    joint5_x = joint5[0]
+
+    if joint4_x >= joint5_x:
+        return False
+
     return True
 
 def truss_efficiency(truss_points, logger):
     joint1 = truss_points[0]
     joint2 = truss_points[1]
     joint3 = truss_points[2]
-    load_joint = truss_points[3]
+    joint4 = truss_points[3]
+    joint5 = truss_points[4]
+    load_joint = truss_points[5]
     # Build truss from scratch
     t1 = truss.Truss()
 
@@ -71,6 +85,8 @@ def truss_efficiency(truss_points, logger):
     t1.add_joint(numpy.array([joint1[0]/100.0, joint1[1]/100.0, 0.0]), d=2)
     t1.add_joint(numpy.array([joint2[0]/100.0, joint2[1]/100.0, 0.0]), d=2)
     t1.add_joint(numpy.array([joint3[0]/100.0, joint3[1]/100.0, 0.0]), d=2)
+    t1.add_joint(numpy.array([joint4[0]/100.0, joint4[1]/100.0, 0.0]), d=2)
+    t1.add_joint(numpy.array([joint5[0]/100.0, joint5[1]/100.0, 0.0]), d=2)
 
 
     t1.joints[1].loads[1] = -100
@@ -82,11 +98,15 @@ def truss_efficiency(truss_points, logger):
     t1.add_member(0, 3)
     t1.add_member(3, 4)
     t1.add_member(4, 5)
-    t1.add_member(5, 2)
+    t1.add_member(5, 6)
+    t1.add_member(6, 7)
+    t1.add_member(7, 2)
 
     t1.add_member(3, 1)
     t1.add_member(4, 1)
     t1.add_member(5, 1)
+    t1.add_member(6, 1)
+    t1.add_member(7, 1)
 
     t1.calc_mass()
     try:
@@ -140,20 +160,30 @@ def get_truss_load_and_efficiency(the_truss, logger):
 
 def get_tuples():
     print "Getting All Tuples..."
-    x1 = numpy.arange (1.0, 5.0, 0.5)
-    y1 = numpy.arange (4.0, 8.0, 0.5)
+    x1 = numpy.arange (3.5, 5.5, 0.5)
+    y1 = numpy.arange (7.5, 9.5, 0.5)
     p1 = itertools.product (x1,y1)
     l1 = list(p1)
 
-    x2 = numpy.arange (9.0, 13.0, 0.5)
-    y2 = numpy.arange (9.0, 13.0, 0.5)
+    x2 = numpy.arange (9.5, 11.5, 0.5)
+    y2 = numpy.arange (15.5, 17.5, 0.5)
     p2 = itertools.product (x2,y2)
     l2 = list(p2)
 
-    x3 = numpy.arange (21.0, 25.0, 0.5)
-    y3 = numpy.arange (10.0, 14.0, 0.5)
+    x3 = numpy.arange (18.5, 20.5, 0.5)
+    y3 = numpy.arange (17.5, 19.5, 0.5)
     p3 = itertools.product (x3,y3)
     l3 = list(p3)
+
+    x4 = numpy.arange (27.5, 29.5, 0.5)
+    y4 = numpy.arange (14.5, 16.5, 0.5)
+    p4 = itertools.product (x4,y4)
+    l4 = list(p4)
+
+    x5 = numpy.arange (29.5, 31.5, 0.5)
+    y5 = numpy.arange (11.5, 13.5, 0.5)
+    p5 = itertools.product (x5,y5)
+    l5 = list(p5)
 
     load_points_list = []
 
@@ -164,10 +194,10 @@ def get_tuples():
         p = (x, y)
         load_points_list.append(p)
 
-    p4 = itertools.product (l1, l2, l3, load_points_list)
+    p6 = itertools.product (l1, l2, l3, l4, l5, load_points_list)
     # l4 = list(p4)  
-    print len(x1) * len(x2) * len(x3) * len(all_x) * len(y1) * len(y2) * len(y3)
-    return p4
+    print len(x1) * len(x2) * len(x3) * len(x4) * len(x5) * len(all_x) * len(y1) * len(y2) * len(y3) * len(y4) * len(y5)
+    return p6
 
 # def get_tuples():
 #     print "Getting All Tuples..."

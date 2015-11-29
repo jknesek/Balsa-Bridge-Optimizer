@@ -1,5 +1,5 @@
-07:33:53 11/29/15 CST
-/Users/doug/Documents/python/virtualenvs/Balsa-Bridge-Optimizer/Balsa-Bridge-Optimizer/tests
+11:21:56 11/29/15 CST
+/Users/jackknesek/Documents/python/virtualenvs/trusses/tests
 
 
 (0) SUMMARY OF ANALYSIS
@@ -12,13 +12,15 @@
 =============================
 
 --- JOINTS ---
-         X      Y       Z    X-Support Y-Support Z-Support
-Joint_00    0.0     0.0  0.0  False      True     True    
-Joint_01   0.09  0.0125  0.0  False     False     True    
-Joint_02   0.37  0.0514  0.0   True      True     True    
-Joint_03  0.035    0.07  0.0  False     False     True    
-Joint_04  0.125    0.11  0.0  False     False     True    
-Joint_05   0.24    0.11  0.0  False     False     True    
+         X      Y                Z    X-Support Y-Support Z-Support
+Joint_00    0.0              0.0  0.0  False      True     True    
+Joint_01  0.185  0.0256944444444  0.0  False     False     True    
+Joint_02   0.37           0.0514  0.0   True      True     True    
+Joint_03  0.045             0.09  0.0  False     False     True    
+Joint_04  0.095             0.16  0.0  False     False     True    
+Joint_05   0.19            0.185  0.0  False     False     True    
+Joint_06  0.275            0.155  0.0  False     False     True    
+Joint_07  0.305             0.12  0.0  False     False     True    
 
 --- MEMBERS ---
           Joint-A Joint-B Material Shape    Height(m)  Width(m) Radius(m) Thickness(m)
@@ -27,10 +29,14 @@ Member_01  1       2       BALSA    square  0.00635    0.00635   N/A       N/A
 Member_02  0       3       BALSA    square  0.00635    0.00635   N/A       N/A        
 Member_03  3       4       BALSA    square  0.00635    0.00635   N/A       N/A        
 Member_04  4       5       BALSA    square  0.00635    0.00635   N/A       N/A        
-Member_05  5       2       BALSA    square  0.00635    0.00635   N/A       N/A        
-Member_06  3       1       BALSA    square  0.00635    0.00635   N/A       N/A        
-Member_07  4       1       BALSA    square  0.00635    0.00635   N/A       N/A        
-Member_08  5       1       BALSA    square  0.00635    0.00635   N/A       N/A        
+Member_05  5       6       BALSA    square  0.00635    0.00635   N/A       N/A        
+Member_06  6       7       BALSA    square  0.00635    0.00635   N/A       N/A        
+Member_07  7       2       BALSA    square  0.00635    0.00635   N/A       N/A        
+Member_08  3       1       BALSA    square  0.00635    0.00635   N/A       N/A        
+Member_09  4       1       BALSA    square  0.00635    0.00635   N/A       N/A        
+Member_10  5       1       BALSA    square  0.00635    0.00635   N/A       N/A        
+Member_11  6       1       BALSA    square  0.00635    0.00635   N/A       N/A        
+Member_12  7       1       BALSA    square  0.00635    0.00635   N/A       N/A        
 
 --- MATERIALS ---
       Density(kg/m3) Elastic Modulus(GPa) Yield Strength(MPa)
@@ -48,33 +54,43 @@ Joint_02  0.0    -0.00  0.0
 Joint_03  0.0    -0.00  0.0  
 Joint_04  0.0    -0.00  0.0  
 Joint_05  0.0    -0.00  0.0  
+Joint_06  0.0    -0.00  0.0  
+Joint_07  0.0    -0.00  0.0  
 
 --- REACTIONS ---
          X-Reaction(kN) Y-Reaction(kN) Z-Reaction(kN)
-Joint_00   N/A           0.08           0.00         
-Joint_01   N/A            N/A           0.00         
-Joint_02  0.00           0.02           0.00         
-Joint_03   N/A            N/A           0.00         
-Joint_04   N/A            N/A           0.00         
-Joint_05   N/A            N/A           0.00         
+Joint_00    N/A          0.05           0.00         
+Joint_01    N/A           N/A           0.00         
+Joint_02  -0.00          0.05           0.00         
+Joint_03    N/A           N/A           0.00         
+Joint_04    N/A           N/A           0.00         
+Joint_05    N/A           N/A           0.00         
+Joint_06    N/A           N/A           0.00         
+Joint_07    N/A           N/A           0.00         
 
 --- FORCES AND STRESSES ---
            Area(m2)  Moment-of-Inertia(m4)  Axial-force(N)  Yielding Buckling
-Member_00  0.00004   1.354920e-10           41.070402       806.45        N/A
-Member_01  0.00004   1.354920e-10           41.675100       806.45        N/A
-Member_02  0.00004   1.354920e-10          -90.963057      -483.87    -807.81
-Member_03  0.00004   1.354920e-10          -90.989661      -483.87   -510.086
-Member_04  0.00004   1.354920e-10          -69.885097      -483.87   -374.127
-Member_05  0.00004   1.354920e-10          -45.278603      -483.87   -243.329
-Member_06  0.00004   1.354920e-10           61.438218       806.45        N/A
-Member_07  0.00004   1.354920e-10           39.253301       806.45        N/A
-Member_08  0.00004   1.354920e-10           34.118520       806.45        N/A
+Member_00  0.00004   1.354920e-10           27.146592       806.45        N/A
+Member_01  0.00004   1.354920e-10           42.300355       806.45        N/A
+Member_02  0.00004   1.354920e-10          -60.124491      -483.87   -488.675
+Member_03  0.00004   1.354920e-10          -61.179580      -483.87   -668.626
+Member_04  0.00004   1.354920e-10          -60.577569      -483.87   -512.729
+Member_05  0.00004   1.354920e-10          -60.936929      -483.87   -608.964
+Member_06  0.00004   1.354920e-10          -60.703759      -483.87   -2328.39
+Member_07  0.00004   1.354920e-10          -60.915424      -483.87   -554.009
+Member_08  0.00004   1.354920e-10            9.542422       806.45        N/A
+Member_09  0.00004   1.354920e-10           41.357819       806.45        N/A
+Member_10  0.00004   1.354920e-10           35.704881       806.45        N/A
+Member_11  0.00004   1.354920e-10           31.434203       806.45        N/A
+Member_12  0.00004   1.354920e-10           -3.042714      -483.87   -212.412
 
 --- DEFLECTIONS ---
          X-Defl.(mm) Y-Defl.(mm) Z-Defl.(mm)
-Joint_00  -0.10497         N/A    N/A       
-Joint_01  -0.04594    -0.24316    N/A       
+Joint_00  -0.08776         N/A    N/A       
+Joint_01  -0.02532    -0.20257    N/A       
 Joint_02       N/A         N/A    N/A       
-Joint_03   0.03298    -0.12232    N/A       
-Joint_04   0.01834    -0.23728    N/A       
-Joint_05  -0.03552    -0.18412    N/A       
+Joint_03   0.01293    -0.09568    N/A       
+Joint_04   0.00134    -0.13075    N/A       
+Joint_05  -0.03110    -0.16422    N/A       
+Joint_06  -0.06071    -0.13749    N/A       
+Joint_07  -0.08408    -0.13283    N/A       
