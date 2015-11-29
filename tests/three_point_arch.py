@@ -10,19 +10,22 @@ def find_the_best_bridge():
     tuple_of_bridges = get_tuples()
     best_efficiency_so_far = 0.0
     best_bridge_so_far = None
+    best_supported_load_so_far = 0.0
 
     count = 0
 
     for bridge in tuple_of_bridges:
         if is_valid_truss(bridge):
-            _truss, efficiency = truss_efficiency(bridge, logger)
+            _truss, supported_load, efficiency = truss_efficiency(bridge, logger)
+            logger.debug('Result for: ' + str(bridge) + ' load=' + str(supported_load) + ' mass=' + str(_truss.mass) + ' efficiency=' + str(efficiency))
             count += 1
             if count % 10000 == 0:
                 print count
             if efficiency > best_efficiency_so_far:
                 best_efficiency_so_far = efficiency
                 best_bridge_so_far = _truss
-
+                best_supported_load_so_far = supported_load
+                logger.debug('Best so far: ' + ' load=' + str(best_supported_load_so_far) + ' efficiency=' + str(best_efficiency_so_far))
 
     print best_efficiency_so_far
     best_bridge_so_far.print_and_save_report("best_bridge.txt")
@@ -87,23 +90,27 @@ def truss_efficiency(truss_points, logger):
     try:
         t1.calc_fos()
     except LinAlgError:
-        logger.warn('Probably weird bridge: ' + str(truss_points))
-        return t1, 0.0
+        logger.warn('Bridge geometry causes singular matrix, disqualifying: ' + str(truss_points))
+        return t1, 0.0, 0.0
 
-    efficiency = get_truss_efficiency(t1)
-    return t1, efficiency
+    if t1.result_suspect == True:
+        logger.warn('Results possibly inacurate, disqualifying: ' + str(truss_points))
+        return t1, 0.0, 0.0
+
+    supported_load, efficiency = get_truss_load_and_efficiency(t1, logger)
+    return t1, supported_load, efficiency
 
 
 def configure_logging():
     # create logger with 'spam_application'
     logger = logging.getLogger('bridges')
-    logger.setLevel(logging.DEBUG)
+    logger.setLevel(logging.INFO)
     # create file handler which logs even debug messages
     fh = logging.FileHandler('bridges.log')
-    fh.setLevel(logging.DEBUG)
+    fh.setLevel(logging.INFO)
     # create console handler with a higher log level
     ch = logging.StreamHandler()
-    fh.setLevel(logging.DEBUG)
+    fh.setLevel(logging.INFO )
     # create formatter and add it to the handlers
     formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
     fh.setFormatter(formatter)
@@ -113,41 +120,42 @@ def configure_logging():
     logger.addHandler(ch)
     return logger
 
-def get_truss_efficiency(the_truss):
+def get_truss_load_and_efficiency(the_truss, logger):
     weakest_load = 1000000.0
     abs_load = abs(the_truss.load)
     for m in the_truss.members:
-        if m.force > 0:
+        logger.debug('force=' + str(m.force) + ' m.fos_yielding=' + str(m.fos_yielding) + ' m.fos_buckling=' + str(m.fos_buckling) + ' load=' + str(abs_load))
+        if m.force > 0.0:
             supported_load = abs_load * m.fos_yielding / m.force
         else:
-            if m.fos_yielding > m.fos_buckling:
+            if abs(m.fos_yielding) <= abs(m.fos_buckling):
                 supported_load = abs_load * m.fos_yielding / m.force
             else:
                 supported_load = abs_load * m.fos_buckling / m.force
         if supported_load < weakest_load:
             weakest_load = supported_load
-    return weakest_load/the_truss.mass
+    return weakest_load, weakest_load/the_truss.mass
 
 def get_tuples():
     print "Getting All Tuples..."
-    x1 = range (4, 15)
-    y1 = range (4, 14)
+    x1 = range (3, 15, 2)
+    y1 = range (4, 16, 2)
     p1 = itertools.product (x1,y1)
     l1 = list(p1)
 
-    x2 = range (12, 23)
-    y2 = range (9, 19)
+    x2 = range (12, 26, 2)
+    y2 = range (11, 25, 2)
     p2 = itertools.product (x2,y2)
     l2 = list(p2)
 
-    x3 = range (20, 32)
-    y3 = range (7, 16)
+    x3 = range (20, 32, 2)
+    y3 = range (6, 18, 2)
     p3 = itertools.product (x3,y3)
     l3 = list(p3)
 
     load_points_list = []
 
-    all_x = range (11, 27)
+    all_x = range (8, 29, 2)
     for x in all_x:
         y = 5.0/36.0 * x
         p = (x, y)
@@ -155,7 +163,7 @@ def get_tuples():
 
     p4 = itertools.product (l1, l2, l3, load_points_list)
     # l4 = list(p4)  
-    # print l4
+    print len(x1) * len(x2) * len(x3) * len(all_x) * len(y1) * len(y2) * len(y3)
     return p4
 
 # def get_tuples():
