@@ -140,18 +140,18 @@ def get_truss_load_and_efficiency(the_truss, logger):
 
 def get_tuples():
     print "Getting All Tuples..."
-    x1 = numpy.arange (7.5, 9.0, 0.5)
-    y1 = numpy.arange (7.5, 9.0, 0.5)
+    x1 = numpy.arange (7.0, 8.2, 0.2)
+    y1 = numpy.arange (8.5, 9.7, 0.2)
     p1 = itertools.product (x1,y1)
     l1 = list(p1)
 
-    x2 = numpy.arange (15.5, 17.0, 0.5)
-    y2 = numpy.arange (15.5, 17.0, 0.5)
+    x2 = numpy.arange (16.5, 17.7, 0.2)
+    y2 = numpy.arange (12.5, 13.7, 0.2)
     p2 = itertools.product (x2,y2)
     l2 = list(p2)
 
-    x3 = numpy.arange (27.5, 29.0, 0.5)
-    y3 = numpy.arange (13.5, 15.0, 0.5)
+    x3 = numpy.arange (27.0, 28.2, 0.2)
+    y3 = numpy.arange (11.5, 12.7, 0.2)
     p3 = itertools.product (x3,y3)
     l3 = list(p3)
 
