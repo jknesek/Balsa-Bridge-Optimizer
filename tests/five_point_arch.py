@@ -30,7 +30,7 @@ def find_the_best_bridge():
                 logger.debug('Best so far: ' + ' load=' + str(best_supported_load) + ' efficiency=' + str(best_efficiency))
 
     logger.info('Best: ' + str(best_bridge_points) + ' load=' + str(best_supported_load) + ' mass=' + str(best_bridge.mass) + ' efficiency=' + str(best_efficiency))
-    best_bridge.save_report("best_bridge.txt")
+    best_bridge.save_report("best_5pt_bridge.txt")
 
 def is_valid_truss(truss_points_a):
     joint1 = truss_points_a[0]
