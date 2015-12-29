@@ -46,7 +46,7 @@ class Member(object):
         # Calculate properties
         self.set_shape("square", update_props=False)
         self.set_material("BALSA", update_props=False)
-        self.set_parameters(w=0.00635, h=0.00635, update_props=True)
+        self.set_parameters(w=0.00238125, h=0.00238125, update_props=True)
 
     def set_shape(self, new_shape, update_props=True):
         # Read and save hte shape name
