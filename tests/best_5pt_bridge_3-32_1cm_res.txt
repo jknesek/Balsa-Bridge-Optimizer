@@ -1,0 +1,96 @@
+09:27:54 12/30/15 UTC
+/home/jack_knesek/Balsa-Bridge-Optimizer/tests
+
+
+(0) SUMMARY OF ANALYSIS
+=============================
+	- The truss has a mass of 0.00 kg, and a total factor of safety of -68.04. 
+	- The limit state is yielding.
+
+
+(1) INSTANTIATION INFORMATION
+=============================
+
+--- JOINTS ---
+         X      Y                Z    X-Support Y-Support Z-Support
+Joint_00    0.0              0.0  0.0  False      True     True    
+Joint_01  0.185  0.0256944444444  0.0  False     False     True    
+Joint_02   0.37           0.0514  0.0   True      True     True    
+Joint_03   0.05             0.05  0.0  False     False     True    
+Joint_04   0.11             0.08  0.0  False     False     True    
+Joint_05   0.17             0.09  0.0  False     False     True    
+Joint_06   0.23            0.105  0.0  False     False     True    
+Joint_07    0.3             0.09  0.0  False     False     True    
+
+--- MEMBERS ---
+          Joint-A Joint-B Material Shape    Height(m)  Width(m) Radius(m) Thickness(m)
+Member_00  0       1       BALSA    square  0.002381   0.002381  N/A       N/A        
+Member_01  1       2       BALSA    square  0.002381   0.002381  N/A       N/A        
+Member_02  0       3       BALSA    square  0.002381   0.002381  N/A       N/A        
+Member_03  3       4       BALSA    square  0.002381   0.002381  N/A       N/A        
+Member_04  4       5       BALSA    square  0.002381   0.002381  N/A       N/A        
+Member_05  5       6       BALSA    square  0.002381   0.002381  N/A       N/A        
+Member_06  6       7       BALSA    square  0.002381   0.002381  N/A       N/A        
+Member_07  7       2       BALSA    square  0.002381   0.002381  N/A       N/A        
+Member_08  3       1       BALSA    square  0.002381   0.002381  N/A       N/A        
+Member_09  4       1       BALSA    square  0.002381   0.002381  N/A       N/A        
+Member_10  5       1       BALSA    square  0.002381   0.002381  N/A       N/A        
+Member_11  6       1       BALSA    square  0.002381   0.002381  N/A       N/A        
+Member_12  7       1       BALSA    square  0.002381   0.002381  N/A       N/A        
+
+--- MATERIALS ---
+      Density(kg/m3) Elastic Modulus(GPa) Yield Strength(MPa)
+BALSA  150            3.7                  20                
+
+
+(2) STRESS ANALYSIS INFORMATION
+===============================
+
+--- LOADING ---
+         X-Load Y-Load Z-Load
+Joint_00  0.0    -0.00  0.0  
+Joint_01  0.0    -0.10  0.0  
+Joint_02  0.0    -0.00  0.0  
+Joint_03  0.0    -0.00  0.0  
+Joint_04  0.0    -0.00  0.0  
+Joint_05  0.0    -0.00  0.0  
+Joint_06  0.0    -0.00  0.0  
+Joint_07  0.0    -0.00  0.0  
+
+--- REACTIONS ---
+         X-Reaction(kN) Y-Reaction(kN) Z-Reaction(kN)
+Joint_00    N/A          0.05           0.00         
+Joint_01    N/A           N/A           0.00         
+Joint_02  -0.00          0.05           0.00         
+Joint_03    N/A           N/A           0.00         
+Joint_04    N/A           N/A           0.00         
+Joint_05    N/A           N/A           0.00         
+Joint_06    N/A           N/A           0.00         
+Joint_07    N/A           N/A           0.00         
+
+--- FORCES AND STRESSES ---
+           Area(m2)  Moment-of-Inertia(m4)  Axial-force(N)  Yielding   Buckling 
+Member_00  0.000006  2.679407e-12            58.627155      113.407031       N/A
+Member_01  0.000006  2.679407e-12            73.126069      113.407031       N/A
+Member_02  0.000006  2.679407e-12           -82.123020      -68.044219 -19.56907
+Member_03  0.000006  2.679407e-12          -112.657371      -68.044219 -21.74341
+Member_04  0.000006  2.679407e-12          -140.380686      -68.044219 -26.44469
+Member_05  0.000006  2.679407e-12          -140.110493      -68.044219 -25.58048
+Member_06  0.000006  2.679407e-12          -106.361009      -68.044219 -19.09178
+Member_07  0.000006  2.679407e-12           -82.712432      -68.044219 -15.31236
+Member_08  0.000006  2.679407e-12            43.380513      113.407031       N/A
+Member_09  0.000006  2.679407e-12            46.553569      113.407031       N/A
+Member_10  0.000006  2.679407e-12           -11.196853      -68.044219 -22.44054
+Member_11  0.000006  2.679407e-12            64.693637      113.407031       N/A
+Member_12  0.000006  2.679407e-12            36.170285      113.407031       N/A
+
+--- DEFLECTIONS ---
+         X-Defl.(mm) Y-Defl.(mm) Z-Defl.(mm)
+Joint_00  -1.18397         N/A    N/A       
+Joint_01  -0.14339    -3.69829    N/A       
+Joint_02       N/A         N/A    N/A       
+Joint_03  -0.04183    -1.53357    N/A       
+Joint_04   0.21509    -2.85287    N/A       
+Joint_05  -0.05406    -3.71364    N/A       
+Joint_06  -0.63406    -3.09660    N/A       
+Joint_07  -0.78757    -2.08086    N/A       
