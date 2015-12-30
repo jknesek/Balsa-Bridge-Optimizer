@@ -176,7 +176,7 @@ def get_tuples():
     l3 = list(p3)
 
     x4 = numpy.arange (22.0, 25.0, 1.0)
-    y4 = numpy.arange (9.5, 12.5, 1.0)
+    y4 = numpy.arange (10.0, 14.0, 1.0)
     p4 = itertools.product (x4,y4)
     l4 = list(p4)
 
