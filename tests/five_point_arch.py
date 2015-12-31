@@ -160,28 +160,28 @@ def get_truss_load_and_efficiency(the_truss, logger):
 
 def get_tuples():
     print "Getting All Tuples..."
-    x1 = numpy.arange (5.0, 6.25, 0.25)
-    y1 = numpy.arange (5.0, 6.25, 0.25)
+    x1 = numpy.arange (5.25, 6.0, 0.25)
+    y1 = numpy.arange (5.25, 6.0, 0.25)
     p1 = itertools.product (x1,y1)
     l1 = list(p1)
 
-    x2 = numpy.arange (11.0, 12.25, 0.25)
-    y2 = numpy.arange (8.0, 9.25, 0.25)
+    x2 = numpy.arange (11.25, 12.0, 0.25)
+    y2 = numpy.arange (8.25, 9.0, 0.25)
     p2 = itertools.product (x2,y2)
     l2 = list(p2)
 
-    x3 = numpy.arange (17.0, 18.25, 0.25)
-    y3 = numpy.arange (10.0, 11.25, 0.25)
+    x3 = numpy.arange (17.25, 18.0, 0.25)
+    y3 = numpy.arange (10.25, 11.0, 0.25)
     p3 = itertools.product (x3,y3)
     l3 = list(p3)
 
-    x4 = numpy.arange (23.5, 24.75, 0.25)
-    y4 = numpy.arange (10.0, 11.25, 0.25)
+    x4 = numpy.arange (23.75, 24.5, 0.25)
+    y4 = numpy.arange (10.25, 11.0, 0.25)
     p4 = itertools.product (x4,y4)
     l4 = list(p4)
 
-    x5 = numpy.arange (30.0, 31.25, 0.25)
-    y5 = numpy.arange (7.5, 8.75, 0.25)
+    x5 = numpy.arange (30.25, 31.0, 0.25)
+    y5 = numpy.arange (7.75, 8.5, 0.25)
     p5 = itertools.product (x5,y5)
     l5 = list(p5)
 
